@@ -1,18 +1,28 @@
 import { listMenu } from "@/data/menu";
 
 export default function MenuList() {
+  // 1. Fungsi untuk handle klik
+  const handleOrder = (namaMenu: string) => {
+    const adminNumber = "6285888600410"; //
+    const message = `Hallo Nicky baso, saya ingin memesan ${namaMenu}, apakah masih tersedia?`;
+    const url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
+
+    // Buka di tab baru
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 px-4">
       {listMenu.map((item, index) => (
         <button
           key={index}
+          //  menambahkan event onClick
+          onClick={() => handleOrder(item.nama)}
           className="group relative flex flex-col justify-between items-center text-center p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.07)] cursor-pointer transition-all duration-300 outline-none
-                     /* Desktop: Nyala pas dilewati kursor */
                      hover:md:-translate-y-3 hover:md:border-red-200
-                     /* Mobile: Nyala pas 'singgah' (sekali tap langsung aktif merah) */
                      focus:border-red-200 focus:bg-red-50/10 focus:scale-95"
         >
-          {/* Huruf Inisial di Background */}
+          {/* ... SISA KODE KAMU TETAP SAMA ... */}
           <div
             className="absolute top-6 left-1/2 -translate-x-1/2 text-8xl font-black text-slate-50 select-none transition-colors duration-500 z-0 
                           group-hover:text-red-100/40 group-focus:text-red-100/40"
@@ -24,26 +34,21 @@ export default function MenuList() {
             <span className="text-[9px] font-bold text-red-600/60 uppercase tracking-[0.4em] mb-4 block">
               {item.cat}
             </span>
-
-            {/* Nama Menu - Merah saat Hover (Desktop) atau Focus (Mobile) */}
             <h3
               className="font-black text-xl uppercase italic text-slate-800 transition-colors duration-300 leading-tight 
                            group-hover:text-red-600 group-focus:text-red-600"
             >
               {item.nama}
             </h3>
-
             <div
               className="h-[2px] w-8 bg-slate-100 mx-auto my-6 transition-all duration-500 
                             group-hover:w-16 group-hover:bg-red-500 group-focus:w-16 group-focus:bg-red-500"
             ></div>
-
             <p className="text-slate-400 text-[11px] leading-relaxed font-medium px-2">
               {item.desc}
             </p>
           </div>
 
-          {/* Label Harga - Merah saat Hover (Desktop) atau Focus (Mobile) */}
           <div
             className="mt-8 relative z-10 px-5 py-1.5 rounded-full shadow-md transition-all duration-300 bg-slate-900 
                           group-hover:bg-red-600 group-focus:bg-red-600"
