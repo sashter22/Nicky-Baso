@@ -7,13 +7,13 @@ export default function MenuList() {
         <div
           key={index}
           className="group relative flex flex-col justify-between items-center text-center p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.07)] cursor-pointer transition-all duration-300
-                     /* Efek Desktop */
+                     /* Efek Hover Desktop */
                      hover:-translate-y-3 hover:border-red-200 hover:shadow-[0_25px_50px_-12px_rgba(220,38,38,0.15)]
-                     /* Efek HP (Mendem + Warna Halus) */
-                     active:scale-95 active:bg-red-50/50 active:border-red-300 active:shadow-inner active:duration-75"
+                     /* Efek Klik Mobile (Mendem + Warna Kartu Tetap Bersih) */
+                     active:scale-95 active:bg-red-50/30 active:border-red-200 active:shadow-inner"
         >
           {/* Huruf Inisial di Background */}
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 text-8xl font-black text-slate-50 select-none group-hover:text-red-100/50 group-active:text-red-200/40 transition-colors duration-500 z-0">
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 text-8xl font-black text-slate-50 select-none group-hover:text-red-100/50 transition-colors duration-500 z-0">
             {item.nama[0]}
           </div>
 
@@ -33,14 +33,21 @@ export default function MenuList() {
             </p>
           </div>
 
-          {/* Label Harga - INI YANG BERUBAH JADI MERAH PAS DIKLIK */}
+          {/* Label Harga - SEKARANG PERSIS FOTO KEDUA */}
           <div
-            className="mt-8 relative z-10 px-5 py-1.5 rounded-full bg-slate-900 shadow-md transition-all duration-300
+            className="mt-8 relative z-10 px-5 py-1.5 rounded-full transition-all duration-300 shadow-md border
+                          /* Default: Hitam Solid */
+                          bg-slate-900 border-transparent
+                          /* Hover: Merah Solid */
                           group-hover:bg-red-600 
-                          group-active:bg-white group-active:border-red-600 border border-transparent"
+                          /* Klik/Active (Foto Kedua): Putih, Border Merah, Tulisan Merah */
+                          group-active:bg-white group-active:border-red-600 group-active:shadow-none"
           >
             <p
-              className="font-black text-base text-white tracking-tight flex items-center gap-1 transition-colors duration-300
+              className="font-black text-base tracking-tight flex items-center gap-1 transition-colors duration-300
+                          /* Default & Hover: Putih */
+                          text-white 
+                          /* Klik/Active: Merah */
                           group-active:text-red-600"
             >
               <span>RP</span>
