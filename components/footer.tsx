@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-10">
         <div className="flex items-center gap-12">
           <a
-            href="https://wa.me/6282124578135"
+            href="https://wa.me/6285888600410"
             target="_blank"
             className="text-[#25D366] hover:scale-125 transition-transform"
           >
