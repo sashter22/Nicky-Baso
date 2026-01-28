@@ -21,12 +21,15 @@ export const metadata: Metadata = {
     "Nikmati Bakso Urat asli dan Mie Ayam legendaris di Citeureup, Bogor. Rasa juara, harga terjangkau! Lokasi Desa Gunung Sari.",
   keywords: [
     "Nicky Baso",
-    "Bakso Citeureup",
-    "Bakso Bogor",
-    "Bakso Urat Enak",
-    "Mie Ayam Bogor",
+    "Baso Puspanegara, Citeureup",
+    "Baso dengan harga terjangkau",
+    "Baso Urat Enak",
+    "Mie Ayam Puspanegara, Citeureup ",
   ],
-  // Nanti kode verifikasi Google ditaruh di bawah sini kalau sudah ada
+  // new code
+  verification: {
+    google: "C7DTJi-DYv2phdD54oMvnPeDwqg86AaYDF0Hj2Fk2lY",
+  },
 };
 
 export default function RootLayout({
@@ -36,8 +39,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      {" "}
-      {/* Ganti ke 'id' karena kontennya bahasa Indonesia */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
