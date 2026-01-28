@@ -15,44 +15,61 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-[150] transition-all duration-500 px-6 md:px-20 py-5 flex justify-between items-center ${scrolled ? "bg-white shadow-sm py-4" : "bg-transparent"}`}
+      className={`fixed top-0 w-full z-[150] transition-all duration-500 ${
+        scrolled ? "bg-white shadow-sm py-4" : "bg-transparent py-6"
+      }`}
     >
-      <div className="text-xl font-black tracking-tighter uppercase italic">
-        <span className="text-red-600">NICKY</span>{" "}
-        <span className={scrolled ? "text-slate-900" : "text-white"}>BASO</span>
+      {/* Container Utama - Ini kuncinya biar gak renggang ke ujung layar */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-xl font-black tracking-tighter uppercase italic shrink-0">
+          <span className="text-red-600">NICKY</span>{" "}
+          <span className={scrolled ? "text-slate-900" : "text-white"}>
+            BASO
+          </span>
+        </div>
+
+        {/* Menu Desktop - Gap */}
+        <ul
+          className={`hidden md:flex gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-[0.2em] ${
+            scrolled ? "text-slate-600" : "text-white/80"
+          }`}
+        >
+          {menuItems.map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.href}
+                className="hover:text-red-600 transition-colors"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Tombol Mobile */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 relative z-[200]"
+        >
+          {isMenuOpen ? (
+            <X className="text-slate-900" size={28} />
+          ) : (
+            <Menu
+              className={scrolled ? "text-slate-900" : "text-white"}
+              size={28}
+            />
+          )}
+        </button>
       </div>
 
-      <ul
-        className={`hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] ${scrolled ? "text-slate-600" : "text-white/80"}`}
-      >
-        {menuItems.map((item) => (
-          <li key={item.name}>
-            <a
-              href={item.href}
-              className="hover:text-red-600 transition-colors"
-            >
-              {item.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="md:hidden p-2 relative z-[200]"
-      >
-        {isMenuOpen ? (
-          <X className="text-slate-900" size={28} />
-        ) : (
-          <Menu
-            className={scrolled ? "text-slate-900" : "text-white"}
-            size={28}
-          />
-        )}
-      </button>
-
+      {/* Menu Mobile Overlay */}
       <div
-        className={`fixed inset-0 bg-white z-[180] transition-all duration-500 ease-in-out md:hidden flex flex-col pt-24 ${isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
+        className={`fixed inset-0 bg-white z-[180] transition-all duration-500 ease-in-out md:hidden flex flex-col pt-24 ${
+          isMenuOpen
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0 pointer-events-none"
+        }`}
       >
         {menuItems.map((item) => (
           <a
