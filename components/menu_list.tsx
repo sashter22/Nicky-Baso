@@ -33,23 +33,15 @@ export default function MenuList() {
             </p>
           </div>
 
-          {/* Label Harga - SEKARANG PERSIS FOTO KEDUA */}
+          {/* Label Harga - Efek Invert Pas Diklik */}
           <div
-            className="mt-8 relative z-10 px-5 py-1.5 rounded-full transition-all duration-300 shadow-md border
-                          /* Default: Hitam Solid */
-                          bg-slate-900 border-transparent
-                          /* Hover: Merah Solid */
-                          group-hover:bg-red-600 
-                          /* Klik/Active (Foto Kedua): Putih, Border Merah, Tulisan Merah */
-                          group-active:bg-white group-active:border-red-600 group-active:shadow-none"
+            className="mt-8 relative z-10 px-5 py-1.5 rounded-full shadow-md transition-all duration-150 border border-transparent
+                /* Kondisi Normal: Hitam */
+                bg-slate-900 
+                /* Kondisi Pas Diklik (HP): Langsung Merah Terang */
+                group-active:bg-red-600 group-active:scale-110"
           >
-            <p
-              className="font-black text-base tracking-tight flex items-center gap-1 transition-colors duration-300
-                          /* Default & Hover: Putih */
-                          text-white 
-                          /* Klik/Active: Merah */
-                          group-active:text-red-600"
-            >
+            <p className="font-black text-base text-white tracking-tight flex items-center gap-1 transition-transform duration-150">
               <span>RP</span>
               <span>{item.harga}</span>
             </p>
