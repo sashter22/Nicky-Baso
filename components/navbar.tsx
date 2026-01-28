@@ -19,52 +19,53 @@ export default function Navbar() {
         scrolled ? "bg-white shadow-sm py-4" : "bg-transparent py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        {/* Logo - Tambahkan w-auto agar tidak mendorong menu */}
-        <div className="text-xl font-black tracking-tighter uppercase italic shrink-0 w-auto">
+      {/* Container utama: kita pakai flex tanpa justify-between yang maksa */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center">
+        {/* Logo */}
+        <div className="text-xl font-black tracking-tighter uppercase italic shrink-0">
           <span className="text-red-600">NICKY</span>{" "}
           <span className={scrolled ? "text-slate-900" : "text-white"}>
             BASO
           </span>
         </div>
 
-        {/* Wrapper Menu Desktop - Ini yang bikin rapet */}
-        <div className="hidden md:flex flex-1 justify-end items-center">
-          <ul
-            className={`flex items-center gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-[0.2em] ${
-              scrolled ? "text-slate-600" : "text-white/80"
-            }`}
-          >
-            {menuItems.map((item) => (
-              <li key={item.name} className="block whitespace-nowrap">
-                <a
-                  href={item.href}
-                  className="hover:text-red-600 transition-colors"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Menu Desktop: Pakai ml-auto buat dorong seluruh grup menu ke kanan rapi */}
+        <ul
+          className={`hidden md:flex ml-auto items-center gap-6 lg:gap-8 text-[11px] font-bold uppercase tracking-[0.2em] ${
+            scrolled ? "text-slate-600" : "text-white/80"
+          }`}
+        >
+          {menuItems.map((item) => (
+            <li key={item.name} className="whitespace-nowrap">
+              <a
+                href={item.href}
+                className="hover:text-red-600 transition-colors"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
 
         {/* Tombol Mobile */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 relative z-[200]"
-        >
-          {isMenuOpen ? (
-            <X className="text-slate-900" size={28} />
-          ) : (
-            <Menu
-              className={scrolled ? "text-slate-900" : "text-white"}
-              size={28}
-            />
-          )}
-        </button>
+        <div className="md:hidden ml-auto">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 relative z-[200]"
+          >
+            {isMenuOpen ? (
+              <X className="text-slate-900" size={28} />
+            ) : (
+              <Menu
+                className={scrolled ? "text-slate-900" : "text-white"}
+                size={28}
+              />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Menu Mobile Overlay */}
+      {/* Mobile Overlay */}
       <div
         className={`fixed inset-0 bg-white z-[180] transition-all duration-500 ease-in-out md:hidden flex flex-col pt-24 ${
           isMenuOpen
