@@ -7,13 +7,11 @@ export default function MenuList() {
         <div
           key={index}
           className="group relative flex flex-col justify-between items-center text-center p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.07)] cursor-pointer transition-all duration-300
-                     /* Efek Hover Desktop */
-                     hover:-translate-y-3 hover:border-red-200 hover:shadow-[0_25px_50px_-12px_rgba(220,38,38,0.15)]
-                     /* Efek Klik Mobile (Mendem + Warna Kartu Tetap Bersih) */
-                     active:scale-95 active:bg-red-50/30 active:border-red-200 active:shadow-inner"
+                     /* Saat Kartu Dilewati (Hover) */
+                     hover:-translate-y-3 hover:border-red-200 hover:shadow-[0_25px_50px_-12px_rgba(220,38,38,0.15)]"
         >
-          {/* Huruf Inisial di Background */}
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 text-8xl font-black text-slate-50 select-none group-hover:text-red-100/50 transition-colors duration-500 z-0">
+          {/* Huruf Inisial di Background - Ikut Merah Tipis */}
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 text-8xl font-black text-slate-50 select-none group-hover:text-red-100/40 transition-colors duration-500 z-0">
             {item.nama[0]}
           </div>
 
@@ -22,6 +20,7 @@ export default function MenuList() {
               {item.cat}
             </span>
 
+            {/* Nama Menu - OTOMATIS MERAH SAAT KARTU DI-HOVER */}
             <h3 className="font-black text-xl uppercase italic text-slate-800 group-hover:text-red-600 transition-colors duration-300 leading-tight">
               {item.nama}
             </h3>
@@ -33,15 +32,13 @@ export default function MenuList() {
             </p>
           </div>
 
-          {/* Label Harga - Efek Invert Pas Diklik */}
+          {/* Label Harga - OTOMATIS JADI MERAH SAAT KARTU DI-HOVER */}
           <div
-            className="mt-8 relative z-10 px-5 py-1.5 rounded-full shadow-md transition-all duration-150 border border-transparent
-                /* Kondisi Normal: Hitam */
-                bg-slate-900 
-                /* Kondisi Pas Diklik (HP): Langsung Merah Terang */
-                group-active:bg-red-600 group-active:scale-110"
+            className="mt-8 relative z-10 px-5 py-1.5 rounded-full shadow-md transition-all duration-300
+                          /* Warna Awal: Hitam | Warna Pas Kartu Lewat: Merah */
+                          bg-slate-900 group-hover:bg-red-600"
           >
-            <p className="font-black text-base text-white tracking-tight flex items-center gap-1 transition-transform duration-150">
+            <p className="font-black text-base text-white tracking-tight flex items-center gap-1">
               <span>RP</span>
               <span>{item.harga}</span>
             </p>
